@@ -88,7 +88,9 @@ module ActiveRecord::Turntable
     def method_missing(method, *args, &block)
       clear_query_cache_if_needed(method)
       if shard_fixed?
-        connection.send(method, *args.slice(0, 2), &block)
+        rest = args.slice(0..2)
+        keyrest = args.slice(3..-1)&.each_with_object({}) { |item, result| result[item.keys.first] = item.values.first } || {}
+        connection.send(method, *rest, **keyrest, &@block)
       elsif mixable?(method, *args)
         fader = @mixer.build_fader(method, *args, &block)
         logger.debug {
