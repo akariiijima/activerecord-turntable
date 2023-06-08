@@ -9,6 +9,7 @@ doc
 coverage
 gemfiles/*.gemfile.lock
 TAGS
+vendor
 
 # For TextMate
 #*.tmproj
