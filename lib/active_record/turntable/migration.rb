@@ -77,7 +77,7 @@ module ActiveRecord::Turntable::Migration
 
       # TODO: pkname should be pulled from table definitions
       sequence_table_name = ActiveRecord::Turntable::Sequencer.sequence_name(table_name, "id")
-      create_table(sequence_table_name, **options) do |t|
+      create_table(sequence_table_name, options) do |t|
         t.integer :id, limit: 8
       end
       execute "INSERT INTO #{quote_table_name(sequence_table_name)} (`id`) VALUES (0)"
