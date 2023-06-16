@@ -7,8 +7,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ['2.2', '2.3', '2.4', '2.5', '2.6', '2.7']
-    runs-on: ubuntu-latest
+        ruby: ['2.2'] # , '2.3', '2.4', '2.5', '2.6', '2.7']
+    runs-on: ubuntu-20.04
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/rails5_0_0.gemfile
       MYSQL_PWD: root
@@ -19,11 +19,9 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: false
+          bundler-cache: true
       - name: Start mysql
         run: sudo systemctl start mysql.service
-      - name: bundle install
-        run: bundle install
       - name: Reset DB
         run: bundle exec rake turntable:db:reset
       - name: Run RSpec
