@@ -22,6 +22,8 @@ jobs:
           bundler-cache: false
       - name: Start mysql
         run: sudo systemctl start mysql.service
+      - name: bundle install
+        run: bundle install
       - name: Reset DB
         run: bundle exec rake turntable:db:reset
       - name: Run RSpec
