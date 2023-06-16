@@ -10,6 +10,4 @@ gem "mysql2", "~> 0.4.4"
 
 gem "minitest", "< 5.3.4"
 
-gem "warning"
-
 gemspec :path => '../'
