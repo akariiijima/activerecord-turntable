@@ -3,14 +3,16 @@ run-name: Matrix building for 【ruby 2.2 - 2.7】 ✖️ 【rails 5.0 - 6.0】 
 on: [push]
 
 jobs:
-  ar_5_0_0:
+  ruby_2_7:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ['2.2', '2.3', '2.4', '2.5', '2.6', '2.7']
-    runs-on: ubuntu-20.04
+        arversion: 
+          - '5_2_0', '5_2_1', '5_2_2', '5_2_3', '5_2_4', '5_2_5', '5_2_6', '5_2_7', '5_2_8'
+          - '6_0_0', '6_0_1', '6_0_2', '6_0_3', '6_0_4', '6_0_5', '6_0_6'
+    runs-on: ubuntu-latest
     env:
-      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/rails5_0_0.gemfile
+      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/rails${{ matrix.arversion }}.gemfile
       MYSQL_PWD: root
     steps:
       - name: Check out repository code
@@ -18,7 +20,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby }}
+          ruby-version: '2.7'
           bundler-cache: true
       - name: Start mysql
         run: sudo systemctl start mysql.service
@@ -27,6 +29,8 @@ jobs:
       - name: Run RSpec
         run: bundle exec rake spec
 
+  # - '5_0_0', '5_0_1', '5_0_2', '5_0_3', '5_0_4', '5_0_5', '5_0_6', '5_0_7'
+  # - '5_1_0', '5_1_1', '5_1_2', '5_1_3', '5_1_4', '5_1_5', '5_1_6', '5_1_7'
   # ar_5_0_1:
   #   strategy:
   #     fail-fast: false
