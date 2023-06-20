@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arversion: 
+        arversion:
           - '5_2_0', '5_2_1', '5_2_2', '5_2_3', '5_2_4', '5_2_5', '5_2_6', '5_2_7', '5_2_8'
           - '6_0_0', '6_0_1', '6_0_2', '6_0_3', '6_0_4', '6_0_5', '6_0_6'
     runs-on: ubuntu-latest
