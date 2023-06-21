@@ -8,5 +8,6 @@ gem "actionview", "5.2.8"
 gem "mysql2", "~> 0.5.2"
 
 gem "nokogiri", "~> 1.10"
+gem "loofah", "2.21.2"
 
 gemspec :path => '../'
