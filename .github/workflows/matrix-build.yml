@@ -58,4 +58,4 @@ jobs:
       - name: Reset DB
         run: bundle exec rake turntable:db:reset
       - name: Run RSpec
-        run: RUBYOPT='-W:deprecated' bundle exec rake spec
+        run: bundle exec rake spec
