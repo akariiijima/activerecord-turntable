@@ -7,7 +7,7 @@ gem "activesupport", "5.2.8"
 gem "actionview", "5.2.8"
 gem "mysql2", "~> 0.5.2"
 
-gem "nokogiri", "~> 1.10"
+gem "nokogiri", "~> 1.10" if RUBY_VERSION.to_f < 2.5
 gem "loofah", "2.20.0" if RUBY_VERSION.to_f < 2.5
 
 gemspec :path => '../'
