@@ -7,4 +7,6 @@ gem "activesupport", "5.1.7"
 gem "actionview", "5.1.7"
 gem "mysql2", "~> 0.5.2"
 
+gem "nokogiri", "~> 1.10"
+
 gemspec :path => '../'
